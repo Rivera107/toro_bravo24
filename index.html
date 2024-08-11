@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menú, debe estar siempre visible después del inicio de sesión -->
+    <div id="menu" style="display: none;">
+        <ul>
+            <li><a href="#" id="concepto-link">Concepto</a></li>
+            <li><a href="#" id="servicios-link">Servicios</a></li>
+            <li><a href="#" id="legal-link">Legal</a></li>
+            <li><a href="#" id="proveedores-link">Proveedores</a></li>
+            <li><a href="#" id="sociales-link">Sociales</a></li> <!-- Enlace para Sociales -->
+        </ul>
+        
+        <span id="salir">Salir</span>
+    </div>
+
+    <div class="contenedor-centrado" id="form-container">
+        <div class="contenedor">
+            <h1>TORO BRAVO</h1>
+            <form id="form-login">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+            <p id="mensaje"></p>
+        </div>
+    </div>
+
+    <!-- Contenedor para la tabla "Concepto", inicialmente oculto -->
+    <div id="tabla-concepto" style="display: none;">
+        <table border="1" style="width: 100%; margin-top: 20px; text-align: left;">
+            <tr>
+                <th></th>
+                <th>Descripción</th>
+                <th>Decisión Final</th> 
+            </tr>
+            <tr>
+                <td>Logotipo</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            </tr>
+            <tr>
+                <td>Ubicación</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            </tr>
+            <tr>
+                <td>Ambiente</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+ 
+            </tr>
+        </table>
+
+        <div id="progreso-contenedor" style="display: none; margin-top: 20px;">
+            <div id="barra-progreso" style="width: 0%; height: 40px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white;">
+                0%
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para la tabla "Servicios", inicialmente oculto -->
+    <div id="tabla-servicios" style="display: none;">
+        <table border="1" style="width: 100%; margin-top: 20px; text-align: left;">
+            <tr>
+                <th></th>
+                <th>Descripción</th>
+                <th>Decisión Final</th>
+            </tr>
+            <tr>
+                <td>Comida</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            </tr>
+            <tr>
+                <td>Bebida</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                
+            </tr>
+            <tr>
+                <td>Wifi</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+              
+            </tr>
+            <tr>
+                <td>Baños</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+              
+            </tr>
+            <tr>
+                <td>Cocina</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            
+            </tr>
+            <tr>
+                <td>Menú</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                
+            </tr>
+            <tr>
+                <td>Entretenimiento</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                
+            </tr>
+        </table>
+
+        <div id="progreso-servicios-contenedor" style="display: none; margin-top: 20px;">
+            <div id="barra-progreso-servicios" style="width: 0%; height: 40px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white;">
+                0%
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor para la tabla "Legal", inicialmente oculto -->
+<div id="tabla-legal" style="display: none;">
+    <table border="1" style="width: 100%; margin-top: 20px; text-align: left;">
+        <tr>
+            <th></th> <!-- Primera columna vacía para alinear los conceptos -->
+            <th>Descripción</th> <!-- Encabezado de la columna para descripción -->
+            <th>Decisión Final</th> <!-- Encabezado de la columna para decisión final -->
+        </tr>
+        <tr>
+            <td>Permiso Municipal</td> <!-- Concepto de la fila -->
+            <td contenteditable="true"></td> <!-- Celda editable para la descripción -->
+            <td contenteditable="true"></td> <!-- Celda editable para la decisión final -->
+        </tr>
+        <tr>
+            <td>Fiscal</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+        <tr>
+            <td>Banco</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+        </tr>
+    </table>
+
+    <!-- Contenedor para la barra de progreso, inicialmente oculto -->
+    <div id="progreso-legal-contenedor" style="display: none; margin-top: 20px;">
+        <div id="barra-progreso-legal" style="width: 0%; height: 40px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white;">
+            0% <!-- Texto inicial de la barra de progreso -->
+        </div>
+    </div>
+</div>
+
+<!-- Contenedor para la tabla "Proveedores", inicialmente oculto -->
+<div id="tabla-proveedores" style="display: none;">
+    <table border="1" style="width: 100%; margin-top: 20px; text-align: left;">
+        <tr>
+            <th></th> <!-- Primera columna vacía para alinear los conceptos -->
+            <th>Descripción</th> <!-- Encabezado de la columna para descripción -->
+            <th>Decisión Final</th> <!-- Encabezado de la columna para decisión final -->
+            
+        </tr>
+        <tr>
+            <td>Internet</td> <!-- Concepto de la fila -->
+            <td contenteditable="true"></td> <!-- Celda editable para la descripción -->
+            <td contenteditable="true"></td> <!-- Celda editable para la decisión final -->
+          
+        </tr>
+        <tr>
+            <td>Bebidas</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          
+        </tr>
+        <tr>
+            <td>Alimentos</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+         
+        </tr>
+        <tr>
+            <td>Hielo</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+           
+        </tr>
+    </table>
+
+    <!-- Contenedor para la barra de progreso, inicialmente oculto -->
+    <div id="progreso-proveedores-contenedor" style="display: none; margin-top: 20px;">
+        <div id="barra-progreso-proveedores" style="width: 0%; height: 40px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white;">
+            0% <!-- Texto inicial de la barra de progreso -->
+        </div>
+    </div>
+</div>
+
+<!-- Contenedor para la tabla "Sociales", inicialmente oculto -->
+<div id="tabla-sociales" style="display: none;">
+    <table border="1" style="width: 100%; margin-top: 20px; text-align: left;">
+        <tr>
+            <th></th> <!-- Primera columna vacía para alinear los conceptos -->
+            <th>Descripción</th> <!-- Encabezado de la columna para descripción -->
+            <th>Decisión Final</th> <!-- Encabezado de la columna para decisión final -->
+            
+        </tr>
+        <tr>
+            <td>Instagram</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+           
+        </tr>
+        <tr>
+            <td>Facebook</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+           
+        </tr>
+        <tr>
+            <td>Página Web</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+           
+        </tr>
+        
+    </table>
+
+    <!-- Contenedor para la barra de progreso, inicialmente oculto -->
+    <div id="progreso-sociales-contenedor" style="display: none; margin-top: 20px;">
+        <div id="barra-progreso-sociales" style="width: 0%; height: 40px; background-color: #4CAF50; border-radius: 10px; text-align: center; color: white;">
+            0% <!-- Texto inicial de la barra de progreso -->
+        </div>
+    </div>
+</div>
+
+<!-- Botón flotante para crear un nuevo usuario -->
+<button id="btn-nuevo" style="position: fixed; bottom: 20px; left: 20px; border-radius: 50%; width: 60px; height: 60px; background-color: #353839; color: white; font-size: 16px; border: none; cursor: pointer;">
+    Nuevo
+</button>
+
+<!-- Modal para crear un nuevo usuario -->
+<div id="modal-nuevo-usuario" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+    <span id="cerrar-modal" style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+    <h2>Crear Nuevo Usuario</h2>
+    <label for="nuevo-usuario">Usuario:</label>
+    <input type="text" id="nuevo-usuario" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+    <label for="nuevo-password">Contraseña:</label>
+    <input type="password" id="nuevo-password" style="width: 100%; padding: 8px; margin-bottom: 20px;">
+    <button id="btn-guardar" style="background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Guardar</button>
+</div>
+
+
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
+
